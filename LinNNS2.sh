@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo hostnamectl set-hostname LinFreS2
+
 sudo cat <<EOT > /etc/netplan/00-installer-config.yaml
 network:
   ethernets:
