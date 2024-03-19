@@ -1,6 +1,9 @@
 #!/bin/bash
 
-read -p LAN_MAC DMZ_MAC OUTSIDE_MAC
+if [ "$#" -ne 3 ]; then
+    echo "Verwendung: $0 <LAN_MAC> <DMZ_MAC> <OUTSIDE_MAC>"
+    exit 1
+fi
 
 sudo cat <<EOT > /etc/netplan/00-installer-config.yaml
 network:
