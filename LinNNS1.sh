@@ -7,16 +7,9 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    outside:
-      match:
-        macaddress: $1
-      set-name: outside
-      dhcp4: true
-      nameservers:
-        addresses: [1.1.1.1, 8.8.8.8]
     dmz:
       match:
-        macaddress: $2
+        macaddress: $1
       set-name: dmz
       addresses:
         - 192.168.30.10/24
@@ -24,6 +17,13 @@ network:
       routes:
         - to: default
           via: 192.168.30.254
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]
+    outside:
+      match:
+        macaddress: $2
+      set-name: outside
+      dhcp4: true
       nameservers:
         addresses: [1.1.1.1, 8.8.8.8]
 EOF
