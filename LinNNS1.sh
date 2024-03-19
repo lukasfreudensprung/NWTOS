@@ -2,8 +2,6 @@
 
 sudo hostnamectl set-hostname LinFreS1
 
-#!/bin/bash
-
 cat <<EOF | sudo tee /etc/netplan/00-installer-config.yaml > /dev/null
 network:
   ethernets:
