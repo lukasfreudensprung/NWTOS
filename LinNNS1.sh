@@ -185,3 +185,5 @@ options {
 EOF
 
 sudo systemctl restart bind9
+
+echo "Konfiguration abgeschlossen."
