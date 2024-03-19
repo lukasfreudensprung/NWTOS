@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$#" -ne 3 ]; then
-    echo "Verwendung: $0 <LAN_MAC> <DMZ_MAC> <OUTSIDE_MAC>"
-    exit 1
-fi
-
 sudo cat <<EOT > /etc/netplan/00-installer-config.yaml
 network:
   ethernets:
@@ -12,18 +7,18 @@ network:
       addresses:
         - 10.0.0.254/24
       match:
-        macaddress: $LAN_MAC
+        macaddress: $1
       set-name: lan
     dmz:
       addresses:
         - 192.168.30.254/24
       match:
-        macaddress: $DMZ_MAC
+        macaddress: $2
       set-name: dmz
     outside:
       dhcp4: true
       match:
-        macaddress: $OUTSIDE_MAC
+        macaddress: $3
       set-name: outside
   version: 2
 EOT
