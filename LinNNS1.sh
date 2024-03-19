@@ -21,8 +21,6 @@ EOF
 
 sudo netplan apply
 
-sudo apt install isc-dhcp-server
-
 cat <<EOF | sudo tee /etc/dhcp/dhcpd.conf > /dev/null
 # dhcpd.conf
 #
@@ -136,9 +134,6 @@ EOF
 
 sudo service isc-dhcp-server start
 sudo update-rc.d isc-dhcp-server enable
-
-sudo apt update
-sudo apt install bind9 dnsutils bind9-doc -y
 
 sudo mkdir /var/log/named && sudo chown bind:bind /var/log/named
 
