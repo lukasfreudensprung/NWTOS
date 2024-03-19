@@ -28,6 +28,6 @@ sudo sysctl -w net.ipv4.ip_forward=1
 sudo sysctl -w net.ipv6.conf.all.forwarding=1
 sudo sysctl -p
 
-sudo curl -s https://raw.githubusercontent.com/lukasfreudensprung/NWTOS/main/ipt.sh
+sudo curl https://raw.githubusercontent.com/lukasfreudensprung/NWTOS/main/ipt.sh | sudo bash 
 
 echo "Konfiguration abgeschlossen."
