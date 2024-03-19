@@ -1,8 +1,8 @@
 #!/bin/bash
 
-read -p "Bitte geben Sie die MAC-Adresse für die LAN-, DMZ- und Outside-Schnittstellen (getrennt durch Leerzeichen) ein: " LAN_MAC DMZ_MAC OUTSIDE_MAC
+read -p LAN_MAC DMZ_MAC OUTSIDE_MAC
 
-cat <<EOT > /etc/netplan/00-installer-config.yaml
+sudo cat <<EOT > /etc/netplan/00-installer-config.yaml
 network:
   ethernets:
     lan:
