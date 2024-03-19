@@ -4,19 +4,28 @@ sudo hostnamectl set-hostname LinFreS1
 
 cat <<EOF | sudo tee /etc/netplan/00-installer-config.yaml > /dev/null
 network:
+  version: 2
+  renderer: networkd
   ethernets:
-    dmz:
-      addresses:
-        - 192.168.30.10/24
+    outside:
       match:
         macaddress: $1
-      set-name: dmz
-    outside:
+      set-name: outside
       dhcp4: true
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]
+    dmz:
       match:
         macaddress: $2
-      set-name: outside
-  version: 2
+      set-name: dmz
+      addresses:
+        - 192.168.30.10/24
+      dhcp4: false
+      routes:
+        - to: default
+          via: 192.168.30.254
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]
 EOF
 
 sudo netplan apply
